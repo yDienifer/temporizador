@@ -12,7 +12,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 
-// icons 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faStop } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -25,7 +24,7 @@ export default defineComponent({
     },
     methods: {
         stopTheTimer() {
-            this.$emit('stop')
+            this.$emit('stop');
         }
     }
 })

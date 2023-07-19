@@ -1,9 +1,8 @@
 @import './base.css';
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@600&family=Roboto:wght@300&display=swap');
 
 @font-face {
-  font-family: "DemonSlayer";
-  src: url(public/font/Demon_Slayer/blood-crow.ttf) format('truetype');
+  font-family: "Demon-Slayer";
+  src: url(public/font/DemonSlayer/blood-crow-Condensed.ttf) format('truetype');
 }
-

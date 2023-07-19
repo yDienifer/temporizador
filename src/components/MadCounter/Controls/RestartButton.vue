@@ -12,10 +12,12 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 
-// icons 
+// Importando as bibliotecas que farão os icons funcionarem
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faArrowRotateLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
+// Adicionando o icon ao repositório de icons vue-fontawesome
 library.add(faArrowRotateLeft);
 
 export default defineComponent({
@@ -25,7 +27,7 @@ export default defineComponent({
     },
     methods: {
         restartTheTimer() {
-            this.$emit('restart')
+            this.$emit('restart');
         }
     }
 })

@@ -1,14 +1,22 @@
 {
-  "files": [],
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
-    },
-    {
-      "path": "./tsconfig.app.json"
-    },
-    {
-      "path": "./tsconfig.vitest.json"
-    }
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "typeRoots": [
+      "./node_modules/@types",
+      "./types"
+    ],
+    "types": [
+      "@types/node",
+      "@types/vue"
+    ],
+    // Resto das suas opções de configuração
+  },
+  "include": [
+    "src",
+    "types" // Adicione o diretório 'types' aqui
+, "types"  ],
+  "exclude": [
+    "node_modules"
   ]
 }

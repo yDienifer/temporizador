@@ -1,7 +1,7 @@
 <template>
   <div class="quote-container">
-    <p id="quote-text">{{ quote }}</p>
-    <span id="quote-author">{{ quoteCharacter }}</span>
+    <p class="quote-text">{{ quote }}</p>
+    <span class="quote-author">{{ quoteCharacter }}</span>
   </div>
 </template>
 
@@ -22,22 +22,23 @@ export default defineComponent({
 </script>
 
 <style scoped>
-main .quote-container {
+.quote-container {
   margin: 0 auto;
   text-align: center;
-  width: 60%;
+  width: 80%;
 }
 
-main .quote-container #quote-author {
-  color: white;
-  font-weight: bold;
-  width: 100%;
-}
-
-main .quote-container #quote-text {
+.quote-text {
   color: rgba(255, 255, 255, 0.685);
   font-style: italic;
+  font-size: clamp(12px, 3vw, 16px);
   margin-bottom: 5px;
-  width: 100%;
+}
+
+.quote-author {
+  color: white;
+  font-size: clamp(12px, 3vw, 16px);
+  font-weight: bold;
+  margin-top: 10px;
 }
 </style>

@@ -1,12 +1,14 @@
 <template>
     <div class="timer-wrapper">
         <div class="timer-minute">
-            <span id="count-timer">{{ timerTime }}</span>
+            <span :style="{ color: themeColors.primaryColor, textShadow: '0px 0px 9px ' + themeColors.primaryColor }"
+                id="count-timer">{{ timerTime }}</span>
+            <!-- :style definido com as cores especificadas no Vuex. Elas são alteradas conforme o tema escolhido pelo usuário-->
         </div>
         <div class="timer-controls">
-            <RestartButton @restart="restartTheTimer" />
-            <PlayButton @start="startTheTimer" v-if="!timerOn" />
-            <StopButton @stop="stopTheTimer" v-if="timerOn" />
+            <RestartButton @restart="restartTheTimer" /> <!-- Renderizado sempre -->
+            <PlayButton @start="startTheTimer" v-if="!timerOn" /> <!-- Renderizado apenas quando o timer estiver parado -->
+            <StopButton @stop="stopTheTimer" v-if="timerOn" /> <!-- Renderizado apenas quando o timer estiver rodando -->
         </div>
     </div>
 </template>
@@ -28,38 +30,41 @@ export default defineComponent({
     },
     data() {
         return {
-            timerTime: "00:00:00",
-            timerOn: false,
-            intervalId: 0
+            timerTime: "00:00:00", // Formato inicial da minutagem.
+            timerOn: false, // Minutagem inicialmente desligada.
+            intervalId: 0 // Armazena o identificador de intervalo criado pelo `setInterval`.
         };
     },
     methods: {
-        startTheTimer() {
+        startTheTimer(): void {
             this.timerOn = true;
 
-            // Definindo a opacidade como "1" quando a função startTimer() for acionada
+            // Definindo a opacidade como "1" quando a função `startTimer()` for acionada.
             const COUNT_TIMER = document.getElementById("count-timer") as HTMLElement;
             COUNT_TIMER.style.opacity = "1";
 
-            // Definindo o intervalo de tempo da contagem
+            // Definindo o intervalo de tempo da contagem.
             this.intervalId = setInterval(() => {
                 this.timerTime = this.formatTime(this.timerTime);
             }, 1000);
         },
-        stopTheTimer() {
+
+        stopTheTimer(): void {
             this.timerOn = false;
 
-            // Definindo a opacidade como "1" quando a função startTimer() for acionada
+            // Definindo a opacidade como "1" quando a função `startTimer()` for acionada.
             const COUNT_TIMER = document.getElementById("count-timer") as HTMLElement;
-            COUNT_TIMER.style.opacity = "0.4"
+            COUNT_TIMER.style.opacity = "0.4";
 
-            // Pausando a contagem
+            // Pausando a contagem baseado no identificador armazenado no `intervalId`.
             clearInterval(this.intervalId);
         },
-        restartTheTimer() {
-            // Resetando o tempo
-            this.timerTime = "00:00:00";
+
+        restartTheTimer(): void {
+            // Definindo a minutagem novamente como "00:00:00".
+            this.timerTime = "00:00:00"
         },
+
         formatTime(time: string) {
             // Definindo os minutos e segundos
             let [hours, minutes, seconds] = time.split(':');
@@ -83,7 +88,7 @@ export default defineComponent({
             if (minutesConvertedToInteger >= 60) {
                 secondsConvertedToInteger = 0;
                 minutesConvertedToInteger = 0;
-                hoursConvertedToInteger++
+                hoursConvertedToInteger++;
             }
 
             // Dizendo como a minutagem deve ser formatada
@@ -96,9 +101,20 @@ export default defineComponent({
 
             return formattedTime;
         }
-    }
+    },
+    computed: {
+        selectedTheme(): void {
+            return this.$store.state.selectedTheme; // Acessar o tema selecionado a partir do estado global
+        },
+
+        themeColors() {
+            const theme = this.$store.state.themeColors[this.selectedTheme];
+            return theme ? theme : {}; // Verificar se o tema selecionado possui as cores personalizadas definidas
+        },
+    },
 });
 </script>
+
 
 <style>
 .container-timer-button-controls .control-button {
@@ -106,11 +122,14 @@ export default defineComponent({
 }
 
 .container-timer-button-controls .control-button-icon {
+    color: #ffffff9a;
+    font-size: clamp(14px, 4vw, 18px);
     padding: 0 15px 0 5px;
 }
 
 .container-timer-button-controls .control-button-text {
-    font-size: 25px;
+    color: #ffffff9a;
+    font-size: clamp(16px, 4vw, 26px);
 }
 
 .main .quote-container #quote-author {
@@ -130,13 +149,13 @@ export default defineComponent({
 }
 
 .timer-minute #count-timer {
-    color: var(--yellow-color);
+    color: #DB4433;
     filter: brightness(1.4);
-    font-family: "DemonSlayer";
-    font-size: 140px;
+    font-family: "Demon-Slayer", 'Kanit', sans-serif;
+    font-size: clamp(70px, 20vw, 140px);
     letter-spacing: 10px;
     opacity: 0.4;
-    text-shadow: 0px 0px 9px var(--yellow-color);
+    text-shadow: 0px 0px 9px #DB4433;
     text-transform: uppercase;
 }
 </style>

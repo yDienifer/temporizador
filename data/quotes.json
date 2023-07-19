@@ -1,0 +1,34 @@
+{
+    "quotes": [
+        {
+            "id": "1",
+            "quote": "It's very annoying to look for someone to blame.",
+            "quoteCharacter": "Gojō Satoru - Jujutsu Kaisen"
+        },
+        {
+            "id": "2",
+            "quote": "Live with pride. If your weakness overpowers you, warm your heart, grit your teeth, and move forward. Even if your cowardice slows you down, it won't stop the passage of time.",
+            "quoteCharacter": "Rengoku Kyōjurō - Demon Slayer - Kimetsu no Yaiba"
+        },
+        {
+            "id": "3",
+            "quote": "What's the use if those who have the means and power don't fight?",
+            "quoteCharacter": "Eren Yeager - Attack on Titan"
+        },
+        {
+            "id": "4",
+            "quote": "If you win, you will live. If you lose, you will die. If you don't fight, you won't be able to win!",
+            "quoteCharacter": "Eren Yeager - Attack on Titan"
+        },
+        {
+            "id": "5",
+            "quote": "This world is ruthless and it is also very beautiful.",
+            "quoteCharacter": "Mikasa Akkāman - Attack on Titan"
+        },
+        {
+            "id": "6",
+            "quote": "No matter how many people you may lose, you have no choice but to keep on living... No matter how devastating the blows may be.",
+            "quoteCharacter": "Kamado Tanjirō - Demon Slayer - Kimetsu no Yaiba"
+        }
+    ]
+}
